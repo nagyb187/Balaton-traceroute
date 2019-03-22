@@ -35,8 +35,9 @@ def pullmetdata(varos):
             winddir.append(tmpdata)
         elif datatosearchin.find("spacer") != -1:
             tmpdata = datatosearchin
+            #tmpdata[0] = tmpdata[0].replace("-","szélcsend")
             print(tmpdata)
-            winddir.append(['-','NaN'])
+            winddir.append(['szélcsend','NaN'])
         elif datatosearchin.find("km/h") != -1:
             tmpdata = datatosearchin
             tmpdata = tmpdata.replace("Tip('<div class=ikon-title>","")
@@ -73,4 +74,5 @@ def pullmetdata(varos):
     return(varosdata)
 
 BalatonaligaData = pullmetdata("Balatonaliga")
-print(BalatonaligaData)
+for item in BalatonaligaData:
+    print(item)
