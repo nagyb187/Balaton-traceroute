@@ -36,7 +36,7 @@ def pullmetdata(varos):
         elif datatosearchin.find("spacer") != -1:
             tmpdata = datatosearchin
             #tmpdata[0] = tmpdata[0].replace("-","szélcsend")
-            print(tmpdata)
+            #print(tmpdata)
             winddir.append(['szélcsend','NaN'])
         elif datatosearchin.find("km/h") != -1:
             tmpdata = datatosearchin
@@ -52,14 +52,14 @@ def pullmetdata(varos):
         #print(k)
 
     time.pop()
-    print (time)
-    print(len(time))
+    #print (time)
+    #print(len(time))
 
-    print(winddir)
-    print(len(winddir))
+    #print(winddir)
+    #print(len(winddir))
 
-    print(windsp)
-    print(len(windsp))
+    #print(windsp)
+    #print(len(windsp))
         
     varosdata = []
     i = 0
@@ -68,11 +68,24 @@ def pullmetdata(varos):
         i += 2
         
     varosdata.insert(0, ["Idő", "Széllökés irány", "Széllökés sebesség", "Átlagszél irány", "Átlagszél sebesség"])
-    for item in varosdata:
-        print(item)
+    #for item in varosdata:
+        #print(item)
     
     return(varosdata)
 
 BalatonaligaData = pullmetdata("Balatonaliga")
-for item in BalatonaligaData:
-    print(item)
+#for item in BalatonaligaData:
+    #print(item)
+
+varosok = ["Balatonaliga", "Balatonalmadi", "Balatonmariafurdo", "Balatonoszod", "Fonyod", "Keszthely", "Orvenyes", "Siofok", "Szigliget", "Zanka"]
+varosokdata = {}
+
+for varos in varosok:
+    varosokdata[varos] = pullmetdata(varos)
+    
+for varos in varosokdata:
+    print(varos)
+    for item in varosokdata[varos]:
+        print(item)
+
+    
